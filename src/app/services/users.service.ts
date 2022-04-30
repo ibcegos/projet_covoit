@@ -9,7 +9,7 @@ export class UsersService {
   constructor(private http: HttpClient) { }
 
   addUserService(user:any){
-    return this.http.post("", user);
+    return this.http.post("http://localhost:8080/Covoit/add_user", user);
   }
 
 }
