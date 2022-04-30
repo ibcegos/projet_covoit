@@ -1,0 +1,79 @@
+.container {
+    border: #000000;
+    background-color: aqua;
+    border-radius: 10px;
+    padding-right: 5%;
+    padding-left: 2%;
+    max-width: 800px;
+    min-width: 650px;
+    padding-top: 1%;
+}
+
+h1 {
+    color: #2319a5;
+    font-size: 48px;
+    font-family: 'Roboto Mono';
+    font-weight: bold;
+}
+
+.dejaInscrit {
+    color: #2319a5;
+    font-size: 21px;
+    font-family: 'Roboto';
+}
+
+label {
+    color: #4d4c4c;
+    font-size: 21px;
+    font-family: 'Roboto';
+}
+
+input {
+    background-color: #cbd6f6;
+    width: 320px;
+    border-radius: 10px;
+    border-color: transparent;
+}
+
+::placeholder {
+    color: #000000;
+    text-align: end;
+    margin-right: 10px;
+}
+
+.formLabel {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.form-control {
+    margin-left: 10px;
+}
+
+.buttonForm {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3%;
+}
+
+.btn {
+    background-color: #4a6dce;
+    border: none;
+    border-radius: 10px;
+    font-size: 24px;
+    font-family: 'Roboto Mono';
+    color: #ffffff;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-bottom: 5%;
+}
+
+.checkbox {
+    width: 50px;
+}
