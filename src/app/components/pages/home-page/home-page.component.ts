@@ -12,4 +12,9 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  connectUser(user:any) {
+    
+  }
+
 }

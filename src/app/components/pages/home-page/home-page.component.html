@@ -1,0 +1,23 @@
+<div class="container d-flex justify-content-around align-items-center">
+
+         <!-- Formulaire --debut -->
+    <form class="form" (ngSubmit)="connectUser(user)" #user="ngForm">
+        <div class="formLabel">
+            <div class="form-group">
+                <label>Pseudo* :</label>
+                <input type="text" class="form-control" name="pseudo" ngModel required>
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe* :</label>
+                <input type="text" class="form-control" name="password" ngModel required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Valider</button>
+    </form>
+
+    <img class="accueilImg" src="../../../assets/img/illustration_accueil_rocbotcar.png" alt="illustration accueil rocbotcar">
+
+</div>
+
+

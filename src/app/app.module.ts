@@ -3,18 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InscriptionComponent } from './components/inscription/inscription.component';
-import { HomePageComponent } from './components/home-page/home-page.component';
+import { InscriptionComponent } from './components/pages/inscription/inscription.component';
+import { HomePageComponent } from './components/pages/home-page/home-page.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
-import { HeaderComponent } from './components/header/header.component';
+import { HeaderComponent } from './components/shared/header/header.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { CguComponent } from './components/pages/cgu/cgu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InscriptionComponent,
     HomePageComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent,
+    CguComponent
   ],
   imports: [
     BrowserModule,
