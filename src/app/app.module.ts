@@ -10,6 +10,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { CguComponent } from './components/pages/cgu/cgu.component';
+import { AdminComponent } from './components/pages/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CguComponent } from './components/pages/cgu/cgu.component';
     HomePageComponent,
     HeaderComponent,
     FooterComponent,
-    CguComponent
+    CguComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

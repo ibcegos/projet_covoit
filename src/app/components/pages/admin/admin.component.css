@@ -1,0 +1,27 @@
+.tablaAdmin {
+    margin: 3%;
+    width: 70%;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.theadAdmin {
+    font-size: 120%;
+    background-color: #4a6dce;
+    border: 2px solid black;
+}
+
+.thThead {
+    border: 1px solid black;
+    text-align: center;
+}
+
+.trTody {
+    border: 1px solid black;
+}
+
+.thTbody {
+    border: 1px solid black;
+    text-align: center;
+}
+
