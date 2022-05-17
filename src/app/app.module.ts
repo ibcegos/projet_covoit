@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InscriptionComponent } from './components/pages/inscription/inscription.component';
 import { HomePageComponent } from './components/pages/home-page/home-page.component';
+import { PropositionTrajetComponent } from './components/pages/proposition-trajet/proposition-trajet.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { HeaderComponent } from './components/shared/header/header.component';
@@ -17,6 +18,7 @@ import { AdminComponent } from './components/pages/admin/admin.component';
     AppComponent,
     InscriptionComponent,
     HomePageComponent,
+    PropositionTrajetComponent,
     HeaderComponent,
     FooterComponent,
     CguComponent,
