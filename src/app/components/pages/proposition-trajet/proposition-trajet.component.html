@@ -1,0 +1,138 @@
+<div class="container_main">
+    <div class="container_form">
+        <h1>Proposer un trajet</h1>
+        <form class="form" #ride="ngForm">
+            <!-- <form class="form" (ngSubmit)="addRide(ride)" #ride="ngForm">     -->
+            <div class="formLabel">
+                <div class="form-group">
+                    <!-- ********************ADRESSE DE DEPART**************************  -->
+                    <label>Adresse de départ et d'arrivée : </label>
+                    <input type="text" class="form-control" name="adress" ngModel required>
+                    <!-- <input type="text" (blur)="adressBlur(ride)" class="form-control" name="adress" ngModel required> -->
+                </div>
+                <!-- <div [hidden]="adressNull" class="form-group mt-0 text-danger">Veuillez entrer une adresse</div> -->
+
+
+                <!-- ********************LE VEHICULE**************************  -->
+                <div class="form-group">
+                    <label>Mon véhicule : </label>
+                    <input type="text" class="form-control" name="vehicule" ngModel required>
+                    <!-- <input type="text" (blur)="vehiculeBlur(ride)" class="form-control" name="vehicule" ngModel required> -->
+                </div>
+                <!-- <div [hidden]="vehiculeNull" class="form-group mt-0 text-danger">Veuillez entrer un véhicule</div> -->
+
+
+                <!-- ********************NOMBRE DE PLACE DANS LE VEHICULE**************************  -->
+                <div class="form-group">
+                    <label>Nombre de place : </label>
+                    <input type="number" class="form-control" name="vehicule" ngModel required>
+                    <!-- <input type="number" (blur)="placeBlur(ride)" class="form-control" name="vehicule" ngModel required> -->
+                </div>
+                <!-- <div [hidden]="placeNull" class="form-group mt-0 text-danger">Veuillez entrer un nombre de place</div> -->
+
+
+                <!-- ********************TYPE DE TRAJET**************************  -->
+                <div class="btn_radio_type">
+                    <p>Votre trajet est : </p>
+                    <div class="form-group">
+                        <input type="radio" id="punctual" class="form-control" name="ride_type" value="punctual"
+                            [(ngModel)]="ride_type">
+                        <label for="punctual">Ponctuel</label>
+                        <input type="radio" id="recurrent" class="form-control" name="ride_type" value="recurrent"
+                            [(ngModel)]="ride_type">
+                        <label for="recurrent">Récurrent</label>
+                    </div>
+                    <!-- <div [hidden]="typeNull" class="form-group mt-0 text-danger">Veuillez cocher une des cases</div> -->
+                </div>
+
+
+                <!-- ********************POUR UN TRAJET PONCTUEL************************  -->
+                <div *ngIf="ride_type === 'punctual'">
+
+                    <!-- DATE DU TRAJET -->
+                    <div class="form-group">
+                        <label>Date/Horaires : </label>
+                        <input class="form-control" type="date" name="punctual-ride-date" id="punctual-ride-date" ngModel>
+                    </div>
+
+                    <!-- HORAIRE DU TRAJET  -->
+                    <div class="form-group">
+                        <label>Aller : </label>
+                        <input class="form-control ride_time" type="time" id="start_time" name="start_time" ngModel>
+                        <label>Retour : </label>
+                        <input class="form-control ride_time" type="time" id="return_time" name="return_time" ngModel>
+                    </div>
+
+                    <!-- BOUTONS VALIDATION ET RETOUR  -->
+                    <!-- <div class="buttonForm">
+                        <button type="button" class="btn_covoit" routerLink="">Annuler</button>
+                        <button type="submit" class="btn_covoit">Valider</button>
+                    </div> -->
+                </div>
+
+                <!-- ********************POUR UN TRAJET RECURRENT**************************  -->
+                <div *ngIf="ride_type === 'recurrent'" class="d-flex justify-content-end">
+
+                    <div class="container-recurrent-trajet">
+                        <!-- DATE DU TRAJET -->
+                        <div class="form-group">
+                            <div class="date_recurrent_ride">
+                                <label>Date/Horaires : </label>
+                                <select name="recurrent-ride-date" id="recurrent-ride-date" ngModel>
+                                    <option value="lundi">Lundi</option>
+                                    <option value="mardi">Mardi</option>
+                                    <option value="mercredi">Mercredi</option>
+                                    <option value="jeudi">Jeudi</option>
+                                    <option value="vendredi">Vendredi</option>
+                                    <option value="samedi">Samedi</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- HORAIRE DU TRAJET  -->
+                        <div class="form-group">
+                            <div class="start_time_container ride_time_container">
+                                <label>Aller : </label>
+                                <input class="form-control ride_time" type="time" id="start_time" name="start_time" ngModel>
+                            </div>
+                            <div class="start_time_container ride_time_container">
+                                <label>Retour : </label>
+                                <input class="form-control ride_time" type="time" id="return_time" name="return_time"ngModel>
+                            </div>
+                        </div>
+
+                        <!-- AJOUT D'UN JOUR DE TRAJET RECURRENT -->
+                        <div class="btn_recurrent_ride">
+                            <button type="button" class="btn_date_addition"> + Ajouter une date </button>
+                            <button type="button" class="btn_date_suppression"> Supprimer la date </button>
+                        </div>
+
+
+
+                    </div>
+                    <!-- BOUTONS VALIDATION ET RETOUR  -->
+                    <!-- <div class="buttonForm">
+                        <button type="button" class="btn_covoit" routerLink="">Annuler</button>
+                        <button type="submit" class="btn_covoit">Valider</button>
+                    </div> -->
+
+
+
+
+
+
+
+
+
+                </div>
+                <!-- BOUTONS VALIDATION ET RETOUR  -->
+                <div class="buttonForm">
+                    <button type="button" class="btn_covoit" routerLink="">Annuler</button>
+                    <button type="submit" class="btn_covoit">Valider</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</div>
