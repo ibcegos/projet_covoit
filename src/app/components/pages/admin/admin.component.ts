@@ -10,6 +10,8 @@ import { User } from '../../models/user/user';
 export class AdminComponent implements OnInit {
 
   userListToValidate:User[] = [];
+  successValidate: boolean = false;
+  user:User = new User;
 
   constructor(private usersService: UsersService) { }
 
@@ -26,6 +28,9 @@ export class AdminComponent implements OnInit {
 
   setUserValidate(user:User) {
     this.usersService.setUserValidate(user).subscribe( data => {
+      this.successValidate = true;
+      this.user.firstName = data.firstName;
+      this.user.lastName = data.lastName;
       this.getListUserToValidate();
     });
   }

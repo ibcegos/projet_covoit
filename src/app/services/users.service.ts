@@ -22,7 +22,6 @@ export class UsersService {
 
   //validation d'un compte user par un admin
   setUserValidate(user:User) : Observable<User> {
-    
     return this.http.post<User>("http://localhost:8080/Covoit/validate_account", user);
   }
 

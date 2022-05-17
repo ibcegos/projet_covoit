@@ -1,8 +1,15 @@
-.tablaAdmin {
-    margin: 3%;
-    width: 70%;
+.container_form {
     background-color: white;
-    border: 1px solid black;
+    border-radius: 10px;
+    padding-right: 3%;
+    padding-left: 3%;
+    padding-bottom: 3%;
+    padding-top: 1%;
+    min-width: 90%;
+}
+
+.tablaAdmin {
+    min-width: 100%;
 }
 
 .theadAdmin {
