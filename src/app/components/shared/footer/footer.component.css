@@ -1,18 +1,40 @@
+/****** ARRIERE PLAN  *******/
 footer {
-    background-color: #ffffff;
-    padding-left: 5%;
+    background-color: #a8bbef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.contact {
+/******* FOOTER BLANC ********/
+.container_footer{
+    width: 1200px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 12px 16px;
+    box-shadow: 20px 20px 30px -10px rgba(0, 0, 0, 0.2), -20px 20px 30px -10px rgba(0, 0, 0, 0.2);
+    background: #ffffff;
+}
+
+/********** LIENS ************/
+.contact a{
     color: #4d4c4c;
-    font-size: 24px;
+    font-size: 13.5px;
     font-family: 'Roboto';
-    
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 50px;
 }
 
-.rocbotcar {
+.rocbotcar a{
     color: #2319a5;
-    font-size: 24px;
-    font-family: 'Electolize';
-    margin-left: 40%;
+    font-size: 13.5px;
+    font-family: 'Electrolize';
+    
+    text-decoration: none;
+}
+.rocbotcar{
+    margin-left: 35%;
 }

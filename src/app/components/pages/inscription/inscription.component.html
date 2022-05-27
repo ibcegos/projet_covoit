@@ -1,100 +1,112 @@
-<div class="container mt-4">
-    <!-- Mon titre -->
-    <h1 class="text-center text-uppercase ">Inscription </h1>
+<div class="container_main">
+    <div class="container_form">
+        <!-- Mon titre -->
+        <h1>Inscription</h1>
 
-    <div class="text-end">
-        <a href="" class="dejaInscrit" > Déjà inscrit ? </a>
+        <div class="text-end">
+            <a href="" class="dejaInscrit"> Déjà inscrit ? </a>
+        </div>
+
+        <!-- Formulaire --debut -->
+        <form class="form" (ngSubmit)="addUser(user)" #user="ngForm">
+            <div class="formLabel">
+                <div class="form-group">
+                    <label>Pseudonyme* :</label>
+                    <input type="text" (blur)="pseudoBlur(user)" class="form-control" name="pseudo" ngModel required>
+                </div>
+                <div [hidden]="pseudoNull" class="form-group mt-0 text-danger">Veuillez entrer un pseudo !</div>
+                <div class="form-group">
+                    <label for="lastName">Nom* :</label>
+                    <input type="text" (blur)="lastNameBlur(user)" class="form-control" name="lastName" ngModel>
+                </div>
+                <div [hidden]="nomNull" class="form-group mt-0 text-danger">Veuillez entrer votre nom !</div>
+                <div class="form-group">
+                    <label for="firstName">Prénom* :</label>
+                    <input type="text" (blur)="firstNameBlur(user)" class="form-control" name="firstName" ngModel
+                        required>
+                </div>
+                <div [hidden]="prenomNull" class="form-group mt-0 text-danger">Veuillez entrer votre prénom !</div>
+                <div class="form-group">
+                    <label for="email">Adresse email* :</label>
+                    <input type="email" (blur)="emailBlur(user)" class="form-control" name="email"
+                        placeholder="@entrepriseipi.com" ngModel required>
+                </div>
+                <div [hidden]="emailNull" class="form-group mt-0 text-danger">Veuillez entrer votre email entreprise !
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Numéro de téléphone :</label>
+                    <input type="tel" class="form-control" name="phoneNumber" maxlength="10" ngModel required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe* :</label>
+                    <input type="password" (blur)="passwordBlur(user)" class="form-control" name="password" ngModel
+                        required>
+                </div>
+                <div [hidden]="passwordNull" class="form-group mt-0 text-danger">Veuillez entrer un mot de passe !</div>
+                <div class="form-group">
+                    <label for="confirmedPassword">Confirmation du mot de passe* :</label>
+                    <input type="password" (blur)="confirmedPasswordBlur(user)" class="form-control"
+                        name="confirmedPassword" ngModel required>
+                </div>
+                <div [hidden]="confirmedPasswordNull" class="form-group mt-0 text-danger">Veuillez confirmer votre mot
+                    de passe !</div>
+                <div [hidden]="confirmedPasswordMistake" class="form-group mt-0 text-danger">Attention, votre mot de
+                    passe est différent !</div>
+                <div class="form-group mb-3">
+                    <label for="avatar" class="form-label">Photo d'avatar :</label>
+                    <input class="form-control" type="file" id="formFile" name="avatar" ngModel>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-4 mb-12">
+                <div>
+                    <input class="checkbox" type="checkbox" (click)="cguClick(user)" name="cgu" ngModel required>
+                    <label for="cgu">J'accepte les conditions d'utilisation*</label>
+                </div>
+                <a routerLink="/cgu">Lire les conditions d'utilisation</a>
+            </div>
+            <div [hidden]="cguNull" class="form-group mt-0 text-danger justify-content-start ms-5">Veuillez accepter les
+                conditions d'utilisations !</div>
+
+            <!-- Captcha-->
+            <div class="class_captcha">
+                <div class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S"
+                    data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
+                <input class="form-control d-none" data-recaptcha="true" required
+                    data-error="Please complete the Captcha">
+                <div class="help-block with-errors"></div>
+            </div>
+
+
+            <div class="buttonForm">
+                <button type="button" class="btn_covoit" routerLink="">Annuler</button>
+                <button type="submit" class="btn_covoit">Valider</button>
+            </div>
+
+        </form>
+        <!-- Formulaire -- fin -->
+
+        <!-- Modal début -->
+        <div class="modal" id="exampleModal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">En attente de validation</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Votre compte va être validé par un administrateur.</p>
+                        <p>Revenez demain pour pouvoir utiliser notre application, Merci.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()"
+                            routerLink="">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal fin -->
+
     </div>
-
-    <!-- Formulaire --debut -->
-    <form class="form" (ngSubmit)="addUser(user)" #user="ngForm">
-        <div class="formLabel">
-            <div class="form-group">
-                <label>Pseudo* :</label>
-                <input type="text" (blur)="pseudoBlur(user)" class="form-control" name="pseudo" ngModel required>
-            </div>
-            <div [hidden]="pseudoNull" class="form-group mt-0 text-danger">Veuillez entrer un pseudo !</div>
-            <div class="form-group">
-                <label for="lastName">Nom* :</label>
-                <input type="text" (blur)="lastNameBlur(user)" class="form-control" name="lastName" ngModel>
-            </div>
-            <div [hidden]="nomNull" class="form-group mt-0 text-danger">Veuillez entrer votre nom !</div>
-            <div class="form-group">
-                <label for="firstName">Prénom* :</label>
-                <input type="text" (blur)="firstNameBlur(user)" class="form-control" name="firstName" ngModel required>
-            </div>
-            <div [hidden]="prenomNull" class="form-group mt-0 text-danger">Veuillez entrer votre prénom !</div>
-            <div class="form-group">
-                <label for="email">Email* :</label>
-                <input type="email" (blur)="emailBlur(user)" class="form-control" name="email" placeholder="@entrepriseipi.com" ngModel required>
-            </div>
-            <div [hidden]="emailNull" class="form-group mt-0 text-danger">Veuillez entrer votre email entreprise !</div>
-            <div class="form-group">
-                <label for="phoneNumber">Tél :</label>
-                <input type="tel" class="form-control" name="phoneNumber" maxlength="10" ngModel required>
-            </div>
-            <div class="form-group">
-                <label for="password">Mot de passe* :</label>
-                <input type="password" (blur)="passwordBlur(user)" class="form-control" name="password" ngModel required>
-            </div>
-            <div [hidden]="passwordNull" class="form-group mt-0 text-danger">Veuillez entrer un mot de passe !</div>
-            <div class="form-group">
-                <label for="confirmedPassword">Confirmation du mot de passe* :</label>
-                <input type="password" (blur)="confirmedPasswordBlur(user)" class="form-control" name="confirmedPassword" ngModel required>
-            </div>
-            <div [hidden]="confirmedPasswordNull" class="form-group mt-0 text-danger">Veuillez confirmer votre mot de passe !</div>
-            <div [hidden]="confirmedPasswordMistake" class="form-group mt-0 text-danger">Attention, votre mot de passe est différent !</div>
-            <div class="form-group mb-3">
-                <label for="avatar" class="form-label">Photo d'avatar :</label>
-                <input class="form-control" type="file" id="formFile" name="avatar" ngModel>
-            </div>
-        </div>
-        <div class="d-flex justify-content-between mt-4">
-            <div>
-                <input class="checkbox" type="checkbox" (click)="cguClick(user)" name="cgu" ngModel required>
-                <label for="cgu">J'accepte les conditions d'utilisation*</label>      
-            </div>
-            <a routerLink="/cgu">Lire les conditions d'utilisation</a> 
-        </div>
-        <div [hidden]="cguNull" class="form-group mt-0 text-danger justify-content-start ms-5">Veuillez accepter les conditions d'utilisations !</div>
-
-        <!-- Captcha-->
-        <div class="form-group">
-            <div class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
-            <input class="form-control d-none" data-recaptcha="true" required data-error="Please complete the Captcha">
-            <div class="help-block with-errors"></div>
-        </div>
-
-
-        <div class="buttonForm">
-            <button type="button" class="btn" routerLink="">Annuler</button>
-            <button type="submit" class="btn" >Valider</button>
-        </div>
-        
-    </form>
-    <!-- Formulaire -- fin -->
-
-    <!-- Modal début -->
-    <div class="modal" id="exampleModal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">En attente de validation</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>Votre compte va être valider par un admin.</p>
-              <p>Revenez demain pour pouvoir utiliser notre application, Merci.</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()" routerLink="">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    <!-- Modal fin -->
-
-
 </div>

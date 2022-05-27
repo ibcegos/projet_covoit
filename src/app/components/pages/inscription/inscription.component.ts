@@ -27,7 +27,6 @@ export class InscriptionComponent implements OnInit {
   // Inscription 
   addUser(user:any) {
     let data = user.value;
-    console.log(data);
     //Vérification des champs vides au moment de la validation
     if (data.pseudo == ""){
       this.pseudoNull = false;

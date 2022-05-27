@@ -1,0 +1,34 @@
+.container_form {
+    background-color: white;
+    border-radius: 10px;
+    padding-right: 3%;
+    padding-left: 3%;
+    padding-bottom: 3%;
+    padding-top: 1%;
+    min-width: 90%;
+}
+
+.tablaAdmin {
+    min-width: 100%;
+}
+
+.theadAdmin {
+    font-size: 120%;
+    background-color: #4a6dce;
+    border: 2px solid black;
+}
+
+.thThead {
+    border: 1px solid black;
+    text-align: center;
+}
+
+.trTody {
+    border: 1px solid black;
+}
+
+.thTbody {
+    border: 1px solid black;
+    text-align: center;
+}
+

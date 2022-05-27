@@ -1,0 +1,39 @@
+<div class="container_main">
+
+    <div class="container_form">
+
+        <h1>Compte à valider</h1>
+    
+    <div *ngIf="successValidate" >
+        <h4 class="text-center text-success mb-4" *ngIf="successValidate">Le compte de {{ user.firstName }} {{ user.lastName }} a bien été validé ! </h4>
+    </div>
+ 
+        <!-- Table debut -->
+        <table class="tablaAdmin">
+            <thead class="theadAdmin">
+                <tr>
+                <th class="thThead">Pseudo</th>
+                <th class="thThead">Prénom</th>
+                <th class="thThead">Nom</th>
+                <th class="thThead">Email</th>
+                <th class="thThead">Password</th>
+                <th class="thThead">A valider</th>
+                </tr>
+            </thead>
+            <tbody class="tbodyAdmin">
+                <tr class="trTbody" *ngFor="let user of userListToValidate">
+                    <td class="thTbody">{{user.pseudo}}</td> 
+                    <td class="thTbody">{{user.firstName}}</td>
+                    <td class="thTbody">{{user.lastName}}</td>
+                    <td class="thTbody">{{user.email}}</td>
+                    <td class="thTbody">{{user.password}}</td>
+                    <td class="thTbody"><button class="btn btn-danger" (click)= "setUserValidate(user)" type="button">Valider</button></td>
+                </tr>
+            </tbody>
+                
+
+        </table>
+        <!-- Table fin -->
+    </div>
+
+</div>
