@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'inscription', component: InscriptionComponent },
   { path: 'cgu', component: CguComponent },
-  { path: 'trajets', component: TrajetsComponent}
+  { path: 'trajets', component: TrajetsComponent},
   { path: 'admin', component: AdminComponent },
   { path: 'proposition-trajet', component:PropositionTrajetComponent }
   
