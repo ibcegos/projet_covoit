@@ -14,13 +14,13 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
     column-gap: 200px;
-    max-width: 100%;  
+    max-width: 90%;  
     grid-auto-rows: 550px;
 
 }
 .imgTrajets {
     width: 100%;
-    margin: 10%    
+    margin: 15%    
 }
 
 .card {
@@ -90,23 +90,6 @@
   grid-column: 3/5;
 }
 
-
-/* ul {
-    display: flex;
-    flex-wrap: wrap;
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  ul li {
-    flex: 0 0 calc(50% - 10px);
-    margin: 5px;
-    padding: 5px 0;
-    text-align: center;
-    box-sizing: border-box;
-    border: 1px dashed red;
-    background-color: yellow;
-  } */
 
 h3{
     font-size: 16px;
