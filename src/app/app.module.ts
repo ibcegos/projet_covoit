@@ -15,6 +15,7 @@ import { TrajetsComponent } from './components/pages/trajets/trajets.component';
 import { registerLocaleData } from '@angular/common';
 import * as fr from '@angular/common/locales/fr';
 import { AdminComponent } from './components/pages/admin/admin.component';
+import { httpInterceptorProviders } from './_helpers/http.interceptor';
 
 @NgModule({
   declarations: [
@@ -34,9 +35,9 @@ import { AdminComponent } from './components/pages/admin/admin.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [ 
-    {provide: LOCALE_ID, useValue: 'fr-FR'}
-  ],
+  providers: 
+    //  [{provide: LOCALE_ID, useValue: 'fr-FR'}],
+  [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {
