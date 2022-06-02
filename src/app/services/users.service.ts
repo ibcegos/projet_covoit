@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../components/models/user/user';
+import { User } from '../components/models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-
+  
   constructor(private http: HttpClient) { }
 
   //ajout d'un user à l'inscription
@@ -24,5 +24,10 @@ export class UsersService {
   setUserValidate(user:User) : Observable<User> {
     return this.http.post<User>("http://localhost:8080/Covoit/validate_account", user);
   }
+
+  connectUserService(user:User) {
+    return this.http.post<User>("http://localhost:8080/Covoit/login", user);
+  }
+
 
 }

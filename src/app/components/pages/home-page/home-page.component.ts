@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { UsersService } from 'src/app/services/users.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-home-page',
@@ -7,14 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private usersService: UsersService) { }
 
   ngOnInit(): void {
   }
 
 
-  connectUser(user:any) {
-    
+  connectUser(login:NgForm) {
+    let user = login.value;
+    this.usersService.connectUserService(user).subscribe( data => {
+      console.log(data);
+    })
   }
 
 }
