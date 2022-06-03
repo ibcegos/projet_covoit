@@ -69,7 +69,7 @@ p {
     margin-right: 30px;
 }
 
-#recurrent-ride-date {
+.recurrent-ride-date {
     margin-left: 12px;
     color: #4d4c4c;
     font-size: 13.5px;
@@ -78,7 +78,7 @@ p {
     border-radius: 10px;
     border: none;
     padding: 8px 0px;
-    width: 100px;
+    width: 120px;
     text-align: center;
 }
 
@@ -142,26 +142,10 @@ p {
     padding-left: 95px;
 }
 
-.container_proptrajet{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 240px;
-    margin-bottom: 60px;
+.marge-30{
+    margin-left: 110px;
 }
 
-.btn_choix_trajet{
-    color: white;
-    font-size: 20px;
-    font-family: 'Roboto';
-    background: #4a6dce;
-    border-radius: 10px;
-    border: none;
-    padding: 30px 20px;
-    margin: 5px 0;
-    text-align: center;
-}
-
-.marge{
-    height: 60px;
+.w-62{
+    width: 62%;
 }

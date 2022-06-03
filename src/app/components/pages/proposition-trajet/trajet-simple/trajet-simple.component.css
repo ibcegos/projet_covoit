@@ -141,27 +141,3 @@ p {
     align-items: center;
     padding-left: 95px;
 }
-
-.container_proptrajet{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 240px;
-    margin-bottom: 60px;
-}
-
-.btn_choix_trajet{
-    color: white;
-    font-size: 20px;
-    font-family: 'Roboto';
-    background: #4a6dce;
-    border-radius: 10px;
-    border: none;
-    padding: 30px 20px;
-    margin: 5px 0;
-    text-align: center;
-}
-
-.marge{
-    height: 60px;
-}

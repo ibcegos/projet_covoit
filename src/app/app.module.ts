@@ -12,6 +12,8 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { CguComponent } from './components/pages/cgu/cgu.component';
 import { AdminComponent } from './components/pages/admin/admin.component';
+import { TrajetSimpleComponent } from './components/pages/proposition-trajet/trajet-simple/trajet-simple.component';
+import { TrajetRecurrentComponent } from './components/pages/proposition-trajet/trajet-récurrent/trajet-recurrent.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { AdminComponent } from './components/pages/admin/admin.component';
     HeaderComponent,
     FooterComponent,
     CguComponent,
-    AdminComponent
+    AdminComponent, 
+    TrajetSimpleComponent, 
+    TrajetRecurrentComponent
   ],
   imports: [
     BrowserModule,

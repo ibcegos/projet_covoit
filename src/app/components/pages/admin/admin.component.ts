@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
-import { User } from '../../models/user/user';
+import { Users } from '../../models/Users';
 
 @Component({
   selector: 'app-admin',
@@ -9,9 +9,9 @@ import { User } from '../../models/user/user';
 })
 export class AdminComponent implements OnInit {
 
-  userListToValidate:User[] = [];
+  userListToValidate:Users[] = [];
   successValidate: boolean = false;
-  user:User = new User;
+  user:Users = new Users;
 
   constructor(private usersService: UsersService) { }
 
@@ -26,7 +26,7 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  setUserValidate(user:User) {
+  setUserValidate(user:Users) {
     this.usersService.setUserValidate(user).subscribe( data => {
       this.successValidate = true;
       this.user.firstName = data.firstName;
