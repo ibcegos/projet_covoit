@@ -8,7 +8,7 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class InscriptionComponent implements OnInit {
 
-  pseudoNull:any = true;
+  usernameNull:any = true;
   nomNull:any = true;
   prenomNull:any = true;
   emailNull:any = true;
@@ -28,8 +28,8 @@ export class InscriptionComponent implements OnInit {
   addUser(user:any) {
     let data = user.value;
     //Vérification des champs vides au moment de la validation
-    if (data.pseudo == ""){
-      this.pseudoNull = false;
+    if (data.username == ""){
+      this.usernameNull = false;
     }
     if (data.lastName == ""){
       this.nomNull = false;
@@ -63,12 +63,12 @@ export class InscriptionComponent implements OnInit {
   }
 
   //Vérification si les champs sont vides après click sur le champ
-  //Vérifie si le pseudo n'est pas vide
-  pseudoBlur(user:any){
-    if (user.value.pseudo == ""){
-      this.pseudoNull = false;
+  //Vérifie si le username n'est pas vide
+  usernameBlur(user:any){
+    if (user.value.username == ""){
+      this.usernameNull = false;
     } else {
-      this.pseudoNull = true;
+      this.usernameNull = true;
     }
   }
  //Vérifie si le nom n'est pas vide
