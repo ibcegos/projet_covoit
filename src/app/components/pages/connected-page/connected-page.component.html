@@ -17,12 +17,9 @@
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/inscription">Inscription</a>
                     </li>
-
-<!--Pas besoin de ce button tant qu'on est bien dans la page connexion-->
-
-                    <!-- <li>
-                        <button  class="btn btnConnexion" type="button" routerLink="/">Connexion</button>
-                    </li> -->
+                    <li>
+                        <button  class="btn btnConnexion" type="button" routerLink="/">Logout</button>
+                    </li>
                    
 
                     
@@ -33,29 +30,34 @@
 </header>
 
 
-
-
 <div class="container_main">
-    <!-- Formulaire --debut -->
+
     <div class="formulaire">
-        <h1>Connexion</h1>
-        <form class="form" #login="ngForm" (ngSubmit)="Proceedlogin(login.value)">
-            <div class="formLabel">
-                <div class="form-group">
+        <div class="card text-dark ">
+ 
+            <div class="card-header text-center"><h2>Bienvenue !</h2></div>
+         
+              <div class="card-body">
 
-
-                    <!-- <label>Usename* :</label> -->
-
-                    <input type="text" class="form-control" name="username" placeholder="identifiant" ngModel required>
-                </div>
-                <div class="form-group">
-                    <!-- <label for="password">Mot de passe* :</label> -->
-                    <input type="text" class="form-control" name="password" placeholder="mot de passe" ngModel required>
-                    <a href="#">mot de passe oublié ? contactez l'admin</a>
-                </div>
+                <blockquote class="citation">
+                    Le meilleur voyage est celui qu'on partage !.
+                   <cite>Isabelle Starter-Tisne</cite>
+                 </blockquote>
+         
+                
+         
+              </div>
+         
+              <div class="card-footer text-center">
+         
+              <a href="#" class="btn m-2">Proposer votre trajet</a>
+              
+              <a href="#" class="btn  ">Trouver votre trajet</a>
+         
+              </div>
+         
             </div>
-            <button type="submit" class="btn_covoit">Connexion</button>
-        </form>
+
     </div>
     <div class="illustration">
         <img class="accueilImg" src="../../../../assets/img/illustration_accueil_rocbotcar.png"
