@@ -6,15 +6,24 @@ import { HomePageComponent } from './components/pages/home-page/home-page.compon
 import { InscriptionComponent } from './components/pages/inscription/inscription.component';
 import { TrajetsComponent } from './components/pages/trajets/trajets.component';
 import { PropositionTrajetComponent } from './components/pages/proposition-trajet/proposition-trajet.component';
+import { ConnectedPageComponent } from './components/pages/connected-page/connected-page.component';
+import { RoleGuard } from './components/shared/role.guard';
+import { AuthGuard } from './components/shared/auth.guard';
+
+
+
+
 
 
 const routes: Routes = [
-  { path: '', component: HomePageComponent },
+  { path: '', component: HomePageComponent},
   { path: 'inscription', component: InscriptionComponent },
   { path: 'cgu', component: CguComponent },
   { path: 'trajets', component: TrajetsComponent},
-  { path: 'admin', component: AdminComponent },
-  { path: 'proposition-trajet', component:PropositionTrajetComponent }
+  { path: 'admin', component: AdminComponent, canActivate: [RoleGuard]},
+  { path: 'proposition-trajet', component:PropositionTrajetComponent, canActivate: [AuthGuard]},
+  { path: 'connected-page', component: ConnectedPageComponent,canActivate: [AuthGuard]}
+
   
 ];
 
