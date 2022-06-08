@@ -61,3 +61,18 @@
     margin-top: 20px;
     margin-left: -3px;
 }
+
+.modal .modal-content{
+    margin-top: 200px;
+}
+.btn-windows{
+    background-color: #4a6dce;
+    color: #ffffff;
+}
+
+.modal-header img{
+    width: 240px;
+}
+.style_modal{
+background-color: rgba(0, 0, 0, 0.5);
+}

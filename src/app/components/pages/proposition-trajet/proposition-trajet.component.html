@@ -1,12 +1,12 @@
 <div class="container_main">
     <div class="container_form">
-        <div class="marge"></div>
+        <!-- <div class="marge"></div> -->
         <h1>Proposer un trajet</h1>
 
-<div class="container_proptrajet">
+<!-- <div class="container_proptrajet">
     <button type="button" class="btn_choix_trajet" routerLink="/proposition-trajet/trajet-simple">Un trajet simple</button>
     <button type="button" class="btn_choix_trajet" routerLink="/proposition-trajet/trajet-recurrent">Un(des) trajet(s) récurrent(s)</button>
-</div>
+</div> -->
 
         <form class="form" #ride="ngForm" (ngSubmit)="addRide(ride)">
 
@@ -15,69 +15,71 @@
                 <div class="form-group">
                     
                     <label>Adresse de départ et d'arrivée : </label>
-                    <input type="text" class="form-control" name="adress" id="adressStart" ngModel required minlenght="2">
-
-
-                    <!-- <input type="text" class="form-control" name="adress" id="adressStart" [(ngModel)]="adressStart" 
-                    adressStartVar="ngModel" required minlenght="2"
-                    [ngClass]="{'is-invalid': adressStartVar.touched && !adressStartVar.valid}">
-                    <div class="invalid-feedback">
-                        <span *ngIf="adressStartVar.errors">
-                            Entrez une adresse
-                        </span>
-                    </div> -->
-                   
+                    <input type="text" (blur)="departureBlur(ride)" class="form-control" name="departure" id="adressStart" 
+                    ngModel required minlenght="2">
+                    
                 </div>
-                
+                <div [hidden]="departureNull" class="form-group mt-0 text-danger">Veuillez renseigner votre adresse de départ</div>
 
 
                 <!-- ********************LE VEHICULE**************************  -->
                 <div class="form-group">
                     <label>Mon véhicule : </label>
-                    <input type="text" class="form-control" name="vehicule" ngModel required>
-                  
+                    <input type="text" (blur)="vehiculeBlur(ride)" class="form-control" name="vehicule_type"  
+                    ngModel required>
+                    
                 </div>
-                
+                <div [hidden]="vehiculeNull" class="form-group mt-0 text-danger">Veuillez renseigner le véhicule qui sera utilisé</div>
 
                 <!-- ********************NOMBRE DE PLACE DANS LE VEHICULE**************************  -->
                 <div class="form-group">
                     <label>Nombre de place : </label>
-                    <input type="number" class="form-control" name="nb_place" ngModel required>
-                  
+                    <input type="number" (blur)="seatsBlur(ride)" class="form-control" name="seats"  
+                    ngModel required>
+                    
                 </div>
-               
+               <div [hidden]="seatsNull" class="form-group mt-0 text-danger">Veuillez renseigner un nombre positif de place de libre pour le trajet</div>
 
 
                 <!-- ********************TYPE DE TRAJET**************************  -->
                 <div class="btn_radio_type">
                     <p>Votre trajet est : </p>
                     <div class="form-group">
-                        <input type="radio" id="punctual" class="form-control" name="ride_type" value="punctual"
+                        <input type="radio" id="punctual" (blur)="rideTypeBlur(ride)" class="form-control" name="rideType" value="SIMPLE"
                             [(ngModel)]="ride_type">
                         <label for="punctual">Ponctuel</label>
-                        <input type="radio" id="recurrent" class="form-control" name="ride_type" value="recurrent"
+                        <input type="radio" id="recurrent" (blur)="rideTypeBlur(ride)" class="form-control" name="rideType" value="RECURRENT"
                             [(ngModel)]="ride_type">
                         <label for="recurrent">Récurrent</label>
                     </div>
+                    <div [hidden]="rideTypeNull" class="form-group mt-0 text-danger">Veuillez cocher un type de trajet (un trajet récurrent sera disponible toutes les semaines)</div>
                 </div>
                 
                 <!-- ********************POUR UN TRAJET PONCTUEL************************  -->
-                <div *ngIf="ride_type === 'punctual'">
+                <div *ngIf="ride_type === 'SIMPLE'">
 
                     <!-- DATE DU TRAJET -->
                     <div class="form-group">
                         <label>Date/Horaires : </label>
-                        <input class="form-control" type="date" name="dateAller" id="punctual-ride-date" ngModel>
+                        <input class="form-control" type="date" (blur)="dateAllerBlur(ride)"  name="dateAller" id="punctual-ride-date"  
+                        ngModel>
+                        
                     </div>
-
+                    <div [hidden]="dateAllerNull" class="form-group mt-0 text-danger">Veuillez renseigner une date valide</div>
                     <!-- HORAIRE DU TRAJET  -->
                     <div class="form-group">
                         <label>Aller : </label>
-                        <input class="form-control ride_time" type="time" id="start_time" name="timeAller" ngModel>
+                        <input class="form-control ride_time" type="time" (blur)="timeAllerBlur(ride)" id="start_time" name="timeAller"  
+                        ngModel>
+                        
                         <label>Retour : </label>
-                        <input class="form-control ride_time" type="time" id="return_time" name="timeRetour" ngModel>
+                        <input class="form-control ride_time" type="time" (blur)="timeRetourBlur(ride)"  id="return_time" name="timeRetour"  
+                        ngModel>
+                        
                     </div>
-
+                    <div [hidden]="timeAllerNull" class="form-group mt-0 text-danger">Veuillez renseigner une heure de départ</div>
+                    <div [hidden]="timeRetourNull" class="form-group mt-0 text-danger">Veuillez renseigner une heure de retour qui succède celle de départ</div>
+                    <div [hidden]="timeNull" class="form-group mt-0 text-danger">Veuillez vérifier que l'horaire du trajet retour soit bien après l'horaire du trajet aller</div>
                     <!-- BOUTONS VALIDATION ET RETOUR  -->
                     <!-- <div class="buttonForm">
                         <button type="button" class="btn_covoit" routerLink="">Annuler</button>
@@ -86,59 +88,198 @@
                 </div>
 
                 <!-- ********************POUR UN TRAJET RECURRENT**************************  -->
-                <div *ngIf="ride_type === 'recurrent'" class="d-flex justify-content-end">
+                <div *ngIf="ride_type === 'RECURRENT'" class="d-flex justify-content-end">
 
-                    <div class="container-recurrent-trajet">
-                        <!-- DATE DU TRAJET -->
-                        <div class="form-group">
-                            <div class="date_recurrent_ride">
-                                <label>Date/Horaires : </label>
-                                <select name="recurrent-ride-date" id="recurrent-ride-date" ngModel>
-                                    <option value="lundi">Lundi</option>
-                                    <option value="mardi">Mardi</option>
-                                    <option value="mercredi">Mercredi</option>
-                                    <option value="jeudi">Jeudi</option>
-                                    <option value="vendredi">Vendredi</option>
-                                    <option value="samedi">Samedi</option>
-                                </select>
+                    <div class="d-flex justify-content-end flex-column align-items-end">
+
+                        <!-- ********************NUMERO 1**************************  -->
+                        <div class="container-recurrent-trajet">
+                            <!-- DATE DU TRAJET -->
+                            <div class="form-group">
+                                <div class="date_recurrent_ride">
+                                    <label>Jour(s)/Horaires : </label>
+                                    <select class = "recurrent-ride-date" name="jourAller1" (blur)="jourAller1Blur(ride)" id="jourAller1" ngModel>
+                                        <option label="Choisir un jour"></option>
+                                        <option value="lundi">Lundi</option>
+                                        <option value="mardi">Mardi</option>
+                                        <option value="mercredi">Mercredi</option>
+                                        <option value="jeudi">Jeudi</option>
+                                        <option value="vendredi">Vendredi</option>
+                                        <option value="samedi">Samedi</option>
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <!-- HORAIRE DU TRAJET  -->
+                            <div class="form-group">
+                                <div class="start_time_container ride_time_container">
+                                    <label>Aller : </label>
+                                    <input class="form-control ride_time" type="time" (blur)="timeAller1Blur(ride)" id="timeAller1" name="timeAller1" ngModel>
+                                </div>
+                                <div class="start_time_container ride_time_container">
+                                    <label>Retour : </label>
+                                    <input class="form-control ride_time" type="time" (blur)="timeRetour1Blur(ride)" id="timeRetour1" name="timeRetour1"ngModel>
+                                </div>
+                            </div>
+                            <div [hidden]="jourAller1Null" class="form-group mt-0 text-danger">Veuillez renseigner un jour de la semaine</div>
+                            <div [hidden]="timeAller1Null" class="form-group mt-0 text-danger">Veuillez renseigner une heure de départ </div>
+                            <div [hidden]="timeRetour1Null" class="form-group mt-0 text-danger">Veuillez renseigner une heure de retour qui succède celle de départ</div>
+                            <div [hidden]="time1Null" class="form-group mt-0 text-danger">Veuillez vérifier que l'horaire du trajet retour soit bien après l'horaire du trajet aller</div>
+                            
+                           <!-- AJOUT D'UN JOUR DE TRAJET RECURRENT -->
+                            <!-- <div class="btn_recurrent_ride">
+                                <button type="button" class="btn_date_addition"> + Ajouter une date </button>
+                                <button type="button" class="btn_date_suppression"> Supprimer la date </button>
+                            </div> -->
+                            
+                        </div>
+                        <hr class="w-62">
+    
+                        <!-- ********************NUMERO 2**************************  -->
+                        <div class="container-recurrent-trajet">
+                            <!-- DATE DU TRAJET -->
+                            <div class="form-group">
+                                <div class="date_recurrent_ride marge-30">
+                                    <select class = "recurrent-ride-date" (blur)="jourAller2Blur(ride)" name="jourAller2" id="jourAller2" ngModel>
+                                        <option label="Choisir un jour"></option>
+                                        <option value="lundi">Lundi</option>
+                                        <option value="mardi">Mardi</option>
+                                        <option value="mercredi">Mercredi</option>
+                                        <option value="jeudi">Jeudi</option>
+                                        <option value="vendredi">Vendredi</option>
+                                        <option value="samedi">Samedi</option>
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <!-- HORAIRE DU TRAJET  -->
+                            <div class="form-group">
+                                <div class="start_time_container ride_time_container">
+                                    <label>Aller : </label>
+                                    <input class="form-control ride_time" type="time" (blur)="timeAller2Blur(ride)" id="timeAller2" name="timeAller2" ngModel>
+                                </div>
+                                <div class="start_time_container ride_time_container">
+                                    <label>Retour : </label>
+                                    <input class="form-control ride_time" type="time" (blur)="timeRetour2Blur(ride)" id="timeRetour2" name="timeRetour2"ngModel>
+                                </div>
                             </div>
                         </div>
-
-                        <!-- HORAIRE DU TRAJET  -->
-                        <div class="form-group">
-                            <div class="start_time_container ride_time_container">
-                                <label>Aller : </label>
-                                <input class="form-control ride_time" type="time" id="start_time" name="start_time" ngModel>
+                        <div [hidden]="jourAller2Null" class="form-group mt-0 text-danger">Veuillez renseigner un jour de la semaine</div>
+                        <div [hidden]="timeAller2Null" class="form-group mt-0 text-danger">Veuillez renseigner une heure de départ</div>
+                        <div [hidden]="timeRetour2Null" class="form-group mt-0 text-danger">Veuillez renseigner une heure de retour qui succède celle de départ</div>
+                        <div [hidden]="time2Null" class="form-group mt-0 text-danger">Veuillez vérifier que l'horaire du trajet retour soit bien après l'horaire du trajet aller</div>
+                        <hr class="w-62">
+    
+                        <!-- ********************NUMERO 3**************************  -->
+                        <div class="container-recurrent-trajet">
+                            <!-- DATE DU TRAJET -->
+                            <div class="form-group">
+                                <div class="date_recurrent_ride marge-30">
+                                    <select class = "recurrent-ride-date" (blur)="jourAller3Blur(ride)" name="jourAller3" id="jourAller3" ngModel>
+                                        <option label="Choisir un jour"></option>
+                                        <option value="lundi">Lundi</option>
+                                        <option value="mardi">Mardi</option>
+                                        <option value="mercredi">Mercredi</option>
+                                        <option value="jeudi">Jeudi</option>
+                                        <option value="vendredi">Vendredi</option>
+                                        <option value="samedi">Samedi</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="start_time_container ride_time_container">
-                                <label>Retour : </label>
-                                <input class="form-control ride_time" type="time" id="return_time" name="return_time"ngModel>
+    
+                            <!-- HORAIRE DU TRAJET  -->
+                            <div class="form-group">
+                                <div class="start_time_container ride_time_container">
+                                    <label>Aller : </label>
+                                    <input class="form-control ride_time" type="time" (blur)="timeAller3Blur(ride)" id="timeAller3" name="timeAller3" ngModel>
+                                </div>
+                                <div class="start_time_container ride_time_container">
+                                    <label>Retour : </label>
+                                    <input class="form-control ride_time" type="time" (blur)="timeRetour3Blur(ride)" id="timeRetour3" name="timeRetour3"ngModel>
+                                </div>
                             </div>
                         </div>
-
-                        <!-- AJOUT D'UN JOUR DE TRAJET RECURRENT -->
-                        <div class="btn_recurrent_ride">
-                            <button type="button" class="btn_date_addition"> + Ajouter une date </button>
-                            <!-- <button type="button" class="btn_date_addition" (click)="addTrajet()"> + Ajouter une date </button> -->
-                            <button type="button" class="btn_date_suppression"> Supprimer la date </button>
+                        <div [hidden]="jourAller3Null" class="form-group mt-0 text-danger">Veuillez renseigner un jour de la semaine</div>
+                        <div [hidden]="timeAller3Null" class="form-group mt-0 text-danger">Veuillez renseigner une heure de départ</div>
+                        <div [hidden]="timeRetour3Null" class="form-group mt-0 text-danger">Veuillez renseigner une heure de retour qui succède celle de départ</div>
+                        <div [hidden]="time3Null" class="form-group mt-0 text-danger">Veuillez vérifier que l'horaire du trajet retour soit bien après l'horaire du trajet aller</div>
+                        <hr class="w-62">
+    
+                        <!-- ********************NUMERO 4**************************  -->
+                        <div class="container-recurrent-trajet">
+                            <!-- DATE DU TRAJET -->
+                            <div class="form-group">
+                                <div class="date_recurrent_ride marge-30">
+                                    <select class = "recurrent-ride-date" (blur)="jourAller4Blur(ride)" name="jourAller4" id="jourAller4" ngModel>
+                                        <option label="Choisir un jour"></option>
+                                        <option value="lundi">Lundi</option>
+                                        <option value="mardi">Mardi</option>
+                                        <option value="mercredi">Mercredi</option>
+                                        <option value="jeudi">Jeudi</option>
+                                        <option value="vendredi">Vendredi</option>
+                                        <option value="samedi">Samedi</option>
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <!-- HORAIRE DU TRAJET  -->
+                            <div class="form-group">
+                                <div class="start_time_container ride_time_container">
+                                    <label>Aller : </label>
+                                    <input class="form-control ride_time" type="time" (blur)="timeAller4Blur(ride)" id="timeAller4" name="timeAller4" ngModel>
+                                </div>
+                                <div class="start_time_container ride_time_container">
+                                    <label>Retour : </label>
+                                    <input class="form-control ride_time" type="time" (blur)="timeRetour4Blur(ride)" id="timeRetour4" name="timeRetour4" ngModel>
+                                </div>
+                            </div>
                         </div>
-
-
-
+                        <div [hidden]="jourAller4Null" class="form-group mt-0 text-danger">Veuillez renseigner un jour de la semaine</div>
+                        <div [hidden]="timeAller4Null" class="form-group mt-0 text-danger">Veuillez renseigner une heure de départ</div>
+                        <div [hidden]="timeRetour4Null" class="form-group mt-0 text-danger">Veuillez renseigner une heure de retour qui succède celle de départ</div>
+                        <div [hidden]="time4Null" class="form-group mt-0 text-danger">Veuillez vérifier que l'horaire du trajet retour soit bien après l'horaire du trajet aller</div>
+                        <hr class="w-62">
+    
+                        <!-- ********************NUMERO 5**************************  -->
+                        <div class="container-recurrent-trajet">
+                            <!-- DATE DU TRAJET -->
+                            <div class="form-group">
+                                <div class="date_recurrent_ride marge-30">
+                                    <select class = "recurrent-ride-date" (blur)="jourAller5Blur(ride)" name="jourAller5" id="jourAller5" ngModel>
+                                        <option label="Choisir un jour"></option>
+                                        <option value="lundi">Lundi</option>
+                                        <option value="mardi">Mardi</option>
+                                        <option value="mercredi">Mercredi</option>
+                                        <option value="jeudi">Jeudi</option>
+                                        <option value="vendredi">Vendredi</option>
+                                        <option value="samedi">Samedi</option>
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <!-- HORAIRE DU TRAJET  -->
+                            <div class="form-group">
+                                <div class="start_time_container ride_time_container">
+                                    <label>Aller : </label>
+                                    <input class="form-control ride_time" type="time" (blur)="timeAller5Blur(ride)" id="timeAller5" name="timeAller5" ngModel>
+                                </div>
+                                <div class="start_time_container ride_time_container">
+                                    <label>Retour : </label>
+                                    <input class="form-control ride_time" type="time" (blur)="timeRetour5Blur(ride)" id="timeRetour5" name="timeRetour5"ngModel>
+                                </div>
+                            </div>
+                        </div>
+                        <div [hidden]="jourAller5Null" class="form-group mt-0 text-danger">Veuillez renseigner un jour de la semaine</div>
+                        <div [hidden]="timeAller5Null" class="form-group mt-0 text-danger">Veuillez renseigner une heure de départ</div>
+                        <div [hidden]="timeRetour5Null" class="form-group mt-0 text-danger">Veuillez renseigner une heure de retour qui succède celle de départ</div>
+                        <div [hidden]="time5Null" class="form-group mt-0 text-danger">Veuillez vérifier que l'horaire du trajet retour soit bien après l'horaire du trajet aller</div>
+                        <!-- BOUTONS VALIDATION ET RETOUR  -->
+                        <!-- <div class="buttonForm">
+                            <button type="button" class="btn_covoit" routerLink="">Annuler</button>
+                            <button type="submit" class="btn_covoit">Valider</button>
+                        </div> -->
+    
                     </div>
-                    <!-- BOUTONS VALIDATION ET RETOUR  -->
-                    <!-- <div class="buttonForm">
-                        <button type="button" class="btn_covoit" routerLink="">Annuler</button>
-                        <button type="submit" class="btn_covoit">Valider</button>
-                    </div> -->
-
-
-
-
-
-
-
-
 
                 </div>
                 <!-- BOUTONS VALIDATION ET RETOUR  -->
@@ -149,6 +290,34 @@
             </div>
 
         </form>
+
+        <!-- Modal début -->
+        <div class="modal style_modal" id="exampleModal" tabindex="1" role="dialog" [ngStyle]="{'display':display}">
+            <div class="modal-dialog d-flex " role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="../../../../assets/img/logo_typo_rocbotcar.png" alt="ROCBOT CAR">
+                        <h5 class="modal-title">Trajet(s) validé(s)</h5>
+                        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button> -->
+                    </div>
+                    <div class="modal-body">
+                        <p class = "text-center">Vous n'avez plus qu'à attendre. <br>
+                            Les personnes intéressées par votre trajet<br>
+                            vous contacteront par mail ou téléphone. <br>
+                            Patience
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-windows" data-dismiss="modal" (click)="closeModal()"
+                            routerLink="">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal fin -->
+
     </div>
 
 </div>

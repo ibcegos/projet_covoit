@@ -69,7 +69,7 @@ p {
     margin-right: 30px;
 }
 
-#recurrent-ride-date {
+.recurrent-ride-date {
     margin-left: 12px;
     color: #4d4c4c;
     font-size: 13.5px;
@@ -78,7 +78,7 @@ p {
     border-radius: 10px;
     border: none;
     padding: 8px 0px;
-    width: 100px;
+    width: 120px;
     text-align: center;
 }
 
@@ -164,4 +164,27 @@ p {
 
 .marge{
     height: 60px;
+}
+
+.marge-30{
+    margin-left: 110px;
+}
+
+.w-62{
+    width: 62%;
+}
+
+.modal .modal-content{
+    margin-top: 200px;
+}
+.btn-windows{
+    background-color: #4a6dce;
+    color: #ffffff;
+}
+
+.modal-header img{
+    width: 240px;
+}
+.style_modal{
+    background-color: rgba(0, 0, 0, 0.5);
 }
