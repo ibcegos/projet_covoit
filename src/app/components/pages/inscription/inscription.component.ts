@@ -28,38 +28,40 @@ export class InscriptionComponent implements OnInit {
   addUser(user:any) {
     let data = user.value;
     //Vérification des champs vides au moment de la validation
-    if (data.username == ""){
-      this.usernameNull = false;
-    }
-    if (data.lastName == ""){
-      this.nomNull = false;
-    } 
-    if (data.firstName == ""){
-      this.prenomNull = false;
-    }
-    if (data.email == ""){
-      this.emailNull = false;
-    }
-    if (data.password == ""){
-      this.passwordNull = false;
-    }
-    if (data.confirmedPassword == ""){
-      this.confirmedPasswordNull = false;
-    }
-    //avatar par défault // A VERIFIER  !! pas de src ...
-    if (data.avatar == "") {
-      data.avatar = "../../../../assets/img/avatar_default.png";
-    }
-    if (data.cgu == ""){
-      this.cguNull = false;
-    } 
-    else {
-      this.display = 'block';
-      this.usersService.addUserService(data).subscribe( () =>
-      console.log("vous etes inscrit, veuillez attendre demain que votre compte soit validé par un admin !")
-      )
-    }
+      if (data.username == ""){
+        this.usernameNull = false;
+      }
+      if (data.lastName == ""){
+        this.nomNull = false;
+      } 
+      if (data.firstName == ""){
+        this.prenomNull = false;
+      }
+      if (data.email == ""){
+        this.emailNull = false;
+      }
+      if (data.password == ""){
+        this.passwordNull = false;
+      }
+      if (data.confirmedPassword == ""){
+        this.confirmedPasswordNull = false;
+      }
+      //avatar par défault // A VERIFIER  !! pas de src ...
+      if (data.avatar == "") {
+        data.avatar = "../../../../assets/img/avatar_default.png";
+      }
+      if (data.cgu == ""){
+        this.cguNull = false;
+      } 
 
+      if(data.username != "" && data.lastName != "" && data.firstName != "" 
+        && data.email != "" && data.password != "" && data.confirmedPassword != ""
+        && data.avatar != "" && data.cgu != "") {
+          this.display = 'block';
+          this.usersService.addUserService(data).subscribe( () =>
+          console.log("vous etes inscrit, veuillez attendre demain que votre compte soit validé par un admin !")
+      )
+      }
   }
 
   //Vérification si les champs sont vides après click sur le champ
