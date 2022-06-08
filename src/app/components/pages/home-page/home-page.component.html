@@ -2,11 +2,11 @@
     <!-- Formulaire --debut -->
     <div class="formulaire">
         <h1>Connexion</h1>
-        <form class="form" (ngSubmit)="connectUser(user)" #user="ngForm">
+        <form class="form" #login="ngForm" (ngSubmit)="connectUser(login)">
             <div class="formLabel">
                 <div class="form-group">
                     <!-- <label>Pseudo* :</label> -->
-                    <input type="text" class="form-control" name="pseudo" placeholder="identifiant" ngModel required>
+                    <input type="text" class="form-control" name="username" placeholder="identifiant" ngModel required>
                 </div>
                 <div class="form-group">
                     <!-- <label for="password">Mot de passe* :</label> -->

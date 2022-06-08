@@ -1,5 +1,5 @@
-import { Recurrents } from "./recurrents";
-import { Simples } from "./simples";
+import { Recurrents } from "./Recurrents";
+import { Simples } from "./Simples";
 
 
 export class Rides {

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID,NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +11,9 @@ import { HttpClientModule} from '@angular/common/http';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { CguComponent } from './components/pages/cgu/cgu.component';
+import { TrajetsComponent } from './components/pages/trajets/trajets.component';
+import { registerLocaleData } from '@angular/common';
+import * as fr from '@angular/common/locales/fr';
 import { AdminComponent } from './components/pages/admin/admin.component';
 
 
@@ -23,6 +26,7 @@ import { AdminComponent } from './components/pages/admin/admin.component';
     HeaderComponent,
     FooterComponent,
     CguComponent,
+    TrajetsComponent,
     AdminComponent
   ],
   imports: [
@@ -31,7 +35,13 @@ import { AdminComponent } from './components/pages/admin/admin.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ 
+    {provide: LOCALE_ID, useValue: 'fr-FR'}
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    registerLocaleData(fr.default);
+ }
+}

@@ -1,4 +1,5 @@
-import { Rides } from "./rides";
+
+import { Rides } from "./Rides";
 import { Users } from "./Users";
 
 export class Drivers {
@@ -9,3 +10,4 @@ export class Drivers {
 
     ) { }
 }
+

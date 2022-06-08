@@ -1,11 +1,12 @@
-import { Rides } from "./rides";
+
+import { Rides } from "./Rides";
 
 
 
 export class Users {
     constructor(
         public id?: number,
-        public pseudo?: string,
+        public username?: string,
         public lastName?: string,
         public firstName?: string,
         public email?: string,
@@ -16,3 +17,4 @@ export class Users {
         public avatar?: string
     ) { }
 }
+

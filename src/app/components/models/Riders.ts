@@ -1,4 +1,4 @@
-import { Rides } from "./rides";
+import { Rides } from "./Rides";
 import { Users } from "./Users";
 
 export class Riders {
@@ -6,4 +6,6 @@ export class Riders {
         public user : Users,
         public rides : Rides[]
     ) { }
+
 }
+

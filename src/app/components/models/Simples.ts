@@ -1,5 +1,5 @@
 import { Time } from "@angular/common";
-import { Rides } from "./rides";
+import { Rides } from "./Rides";
 
 export class Simples {
     constructor(
@@ -8,7 +8,6 @@ export class Simples {
         public dateRetour? : Date,
         public timeRetour? : Time,
         public rides? : Rides[]
-
 
     ) { }
 }
