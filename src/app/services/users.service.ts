@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Contacts } from '../components/models/Contacts';
 import { Users } from '../components/models/Users';
 
 
@@ -58,6 +59,14 @@ export class UsersService {
 
    getUserByUsernameService(username: String) : Observable<any> {
     return this.http.get("http://localhost:8080/Covoit/user/get_users_by_username/"+ username);
+  }
+
+  sendMessageService(message: any) : Observable<any> {
+    return this.http.post<any>("http://localhost:8080/Covoit/user/send_message", message);
+  }
+
+  getAllContactService() : Observable<Contacts[]> {
+    return this.http.get<Contacts[]>("http://localhost:8080/Covoit/admin/get_all_contact");
   }
 
 }

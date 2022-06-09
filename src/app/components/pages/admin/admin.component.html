@@ -15,6 +15,9 @@
 
             <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
             <label (click)="formUpdateUser()" class="btn btn-outline-primary" for="btnradio3">Modifier un compte</label>
+        
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+            <label (click)="formViewMessage()" class="btn btn-outline-primary" for="btnradio4" checked>Gestion des messages</label>
         </div>
 
         <div>
@@ -68,6 +71,9 @@
 
             <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
             <label (click)="formUpdateUser()" class="btn btn-outline-primary" for="btnradio3">Modifier un compte</label>
+        
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+            <label (click)="formViewMessage()" class="btn btn-outline-primary" for="btnradio4">Gestion des messages</label>
         </div>
 
         <h1>Compte à Supprimer</h1>
@@ -115,6 +121,9 @@
 
             <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
             <label (click)="formUpdateUser()" class="btn btn-outline-primary" for="btnradio3" checked>Modifier un compte</label>
+        
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+            <label (click)="formViewMessage()" class="btn btn-outline-primary" for="btnradio4" >Gestion des messages</label>
         </div>
 
         <h1>Compte à Modifier</h1>
@@ -140,6 +149,49 @@
                    <!-- <td class="thTbody">{{user.verified}}</td> -->
                     <td class="thTbody"><button class="btn btn-danger" (click)="editUser(user)" data-toggle="modal" data-target="#exampleModal"
                             type="button">Modifier</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Table fin -->
+    </div>
+</div>
+
+<div class="container_main" *ngIf="contact">
+
+    <div class="container_form">
+
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input (click)="formUserToValidate()" type="radio" class="btn-check" name="btnradio" id="btnradio1"
+                autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnradio1">Valider un compte</label>
+
+            <input (click)="formDeleteUser()" type="radio" class="btn-check" name="btnradio" id="btnradio2"
+                autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnradio2">Supprimer un compte</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+            <label (click)="formUpdateUser()" class="btn btn-outline-primary" for="btnradio3">Modifier un compte</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+            <label (click)="formViewMessage()" class="btn btn-outline-primary" for="btnradio4" checked>Gestion des messages</label>
+        </div>
+
+        <h1>Gestion des messages</h1>
+
+        <!-- Table debut -->
+        <table class="tablaAdmin">
+            <thead class="theadAdmin">
+                <tr>
+                    <th class="thThead">Pseudo</th>
+                    <th class="thThead">Message</th>
+                </tr>
+            </thead>
+            <tbody class="tbodyAdmin">
+                <tr class="trTbody" *ngFor="let message of getAllContactList">
+                    <td class="thTbody">{{message.username}}</td>
+                    <td class="thTbody">{{message.message}}</td>
+                    <!--<td class="thTbody"><button class="btn btn-danger" (click)="editUser(user)" data-toggle="modal" data-target="#exampleModal"
+                            type="button">Supprimer</button></td>-->
                 </tr>
             </tbody>
         </table>

@@ -1,0 +1,19 @@
+/* STYLE DU FORMULAIRE  */
+.formulaire{
+    background: white;
+    border-radius: 10px;
+    padding : 10px 50px;
+    margin: 0 70px;
+}
+
+.formulaire form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* STYLE DE L'ILLUSTRATION */
+.illustration{
+    margin: 50px 0;
+}

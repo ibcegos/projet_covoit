@@ -9,6 +9,7 @@ import { PropositionTrajetComponent } from './components/pages/proposition-traje
 import { ConnectedPageComponent } from './components/pages/connected-page/connected-page.component';
 import { RoleGuard } from './components/shared/role.guard';
 import { AuthGuard } from './components/shared/auth.guard';
+import { ContactComponent } from './components/pages/contact/contact.component';
 
 
 
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: '', component: HomePageComponent},
   { path: 'inscription', component: InscriptionComponent },
   { path: 'cgu', component: CguComponent },
+  { path: 'contact', component: ContactComponent },
   { path: 'trajets', component: TrajetsComponent},
   { path: 'admin', component: AdminComponent, canActivate: [RoleGuard]},
   { path: 'proposition-trajet', component:PropositionTrajetComponent, canActivate: [AuthGuard]},
