@@ -17,6 +17,8 @@ import * as fr from '@angular/common/locales/fr';
 import { AdminComponent } from './components/pages/admin/admin.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { ConnectedPageComponent } from './components/pages/connected-page/connected-page.component';
+import { ProfilComponent } from './components/pages/profil/profil.component';
+import { HistoriqueComponent } from './components/pages/historique/historique.component';
 
 
 
@@ -34,6 +36,8 @@ import { ConnectedPageComponent } from './components/pages/connected-page/connec
     TrajetsComponent,
     AdminComponent,
     ConnectedPageComponent,
+    ProfilComponent,
+    HistoriqueComponent,
 
   ],
   imports: [

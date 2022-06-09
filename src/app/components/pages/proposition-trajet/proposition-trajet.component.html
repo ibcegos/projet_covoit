@@ -9,10 +9,24 @@
                 </li>
                 <div class="nav_right">
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/trajets">Trajets</a>
+                        <a class="nav-link text-center" routerLink="/trajets">Trouver<br>un trajet</a>
                     </li>
-                    <li>
-                        <button  class="btn btnConnexion" type="button" routerLink="/">Logout</button>
+                    <li class="nav-item">
+                        <a class="nav-link text-center" routerLink="/proposition-trajet">Proposer<br>un trajet</a>
+                    </li>
+                    <li class="d-flex">
+                        <a class="btnCompte" routerLink="/profil">Mon Compte</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a class="nav-list" routerLink="/profil">Mon profil</a>
+                            </li>
+                            <li>
+                                <a class="nav-list" routerLink="/historique">Mes trajets</a>
+                            </li>
+                            <li>
+                                <a class="nav-list" routerLink="/">Déconnexion</a>
+                            </li>
+                        </ul>
                     </li>
                     
                 </div>
@@ -309,7 +323,7 @@
                 </div>
                 <!-- BOUTONS VALIDATION ET RETOUR  -->
                 <div class="buttonForm">
-                    <button type="button" class="btn_covoit" routerLink="">Annuler</button>
+                    <button type="button" class="btn_covoit" routerLink="/connected-page">Annuler</button>
                     <button type="submit" class="btn_covoit">Valider</button>
                 </div>
             </div>
@@ -336,7 +350,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-windows" data-dismiss="modal" (click)="closeModal()"
-                            routerLink="">Fermer</button>
+                            routerLink="/historique">Fermer</button>
                     </div>
                 </div>
             </div>

@@ -17,7 +17,7 @@ const httpOptions = {
 })
 
 export class UsersService {
-  
+  tokenresp:any;
   constructor(private http: HttpClient) { }
 
   //ajout d'un user à l'inscription
@@ -44,5 +44,24 @@ export class UsersService {
     //return this.http.post<any>("http://localhost:8080/Covoit/login", user);
   }
 
+  //recuperer l'historique des users à valider après inscription
+  getUserProfilService() : Observable<Users> {
+    let currentusername = this.GetUsernamebyToken(this.GetToken());
+    console.log(currentusername);
+    return this.http.get<Users>("http://localhost:8080/Covoit/getUserProfil/" + currentusername);
+  }
 
+  GetUsernamebyToken(token: any) {
+    let _token = token.split('.')[1];
+    this.tokenresp = JSON.parse(atob(_token))
+    console.log(this.tokenresp);
+    console.log(this.tokenresp.sub)
+    //get the role element from array roles
+    console.log(this.tokenresp.sub);
+    return this.tokenresp.sub;
+  }
+
+  GetToken(){
+    return localStorage.getItem('accessToken')||'';
+   }
 }
