@@ -28,6 +28,10 @@ export class TrajetsService {
       return this.http.get<any>("http://localhost:8080/Covoit/getRides");
     
    }
+
+   getUserService() : Observable<any>{
+    return this.http.get<any>("http://localhost:8080/Covoit/getdriver");
+   }
    
 
 

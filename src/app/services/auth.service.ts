@@ -8,17 +8,18 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  tokenresp:any;
-  tokenaccess:any;
-  private _updatemenu = new Subject<void>();
-  get updatemenu() {
-    return this._updatemenu;
-  }
+  
   API_URL = 'http://localhost:8080/Covoit/login';
   
 
   constructor(private http: HttpClient, private router : Router) { 
 
+  }
+  tokenresp:any;
+  tokenaccess:any;
+  private _updatemenu = new Subject<void>();
+  get updatemenu() {
+    return this._updatemenu;
   }
 
   proceedlogin(usercred: any) {
@@ -53,20 +54,24 @@ Logout(){
 }
  
 GenereteRefreshToken(){
-  let input = {
-    "accessToken": this.GetToken(),
-    "refreshToken": this.GetRefreshToken()
+   let input = {
+     "accessToken": this.GetToken(),
+     "refreshToken": this.GetRefreshToken()
+ }
+ return this.http.post(this.API_URL+ 'refresh', input, {withCredentials: true});
+
 }
-return this.http.post(this.API_URL + 'refresh', input);
-}
+
+
 
 
 GetRefreshToken(){
-  return localStorage.getItem('refreshtoken')||'';
+  return localStorage.getItem('refreshToken') || '';
 }
 SaveTokens(tokendata: any) {
   localStorage.setItem('accessToken', tokendata.accessToken);
-  localStorage.setItem('refreshtoken', tokendata.refreshToken);
+  localStorage.setItem('refreshToken', tokendata.refreshToken);
+  
 }
 
 GetRolebyToken(token: any) {

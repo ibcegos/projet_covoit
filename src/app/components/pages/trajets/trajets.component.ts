@@ -17,6 +17,7 @@ export class TrajetsComponent implements OnInit {
   simpleList!: any;
   recurrentList!: any;
   TableRecurrent: any[] = [];
+  userRide!: any;
 
 
 
@@ -37,46 +38,24 @@ export class TrajetsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTrajets();
+    // this.getUser();
   }
 
   getTrajets() {
 
     this.trajetsService.getTrajetsService().subscribe((data) => {
-
       console.log(data);
-      //extracting simpleList object from data
-      // for (let i = 0; i < data.length; i++) {
-      //   //if the ride is simple
-      //   if (data[i].rideType == "SIMPLE") {
-      //     this.simpleList = data[i].simpleList;
-      //     console.log(this.simpleList);
-      //   }
-      //   //if the ride is recurrent
-      //   else if (data[i].rideType == "RECURRENT") {
-      //     console.log(data[i].recurrentList);
-      //     this.recurrentList = data[i].recurrentList;
-      //     }
-      // console.log(this.TableRecurrent);
-
-
-      //extracting simpleList object from data
-
       this.driverRide = data;
-
-      //this.ride= this.driverRide.rides;
-
-
-      //console.log(this.driverRide);
-      //console.log(this.ride);
-
-
-  });
+    });
   }
+  // getUser() {
+  //   this.trajetsService.getUserService().subscribe((data) => {
+  //     this.userRide = data;
+  //     console.log(data);
+  //   });
+  // }
 }
 
-
-
-  //getTrajetsbyDriver(){
 
 
 

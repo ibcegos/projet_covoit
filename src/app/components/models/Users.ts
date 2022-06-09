@@ -11,7 +11,6 @@ export class Users {
         public firstName?: string,
         public email?: string,
         public password?: string,
-
         public role?: string,
         public rides?: Rides,
         public avatar?: string
