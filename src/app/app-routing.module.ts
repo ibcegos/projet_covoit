@@ -10,9 +10,8 @@ import { ConnectedPageComponent } from './components/pages/connected-page/connec
 import { RoleGuard } from './components/shared/role.guard';
 import { AuthGuard } from './components/shared/auth.guard';
 import { ContactComponent } from './components/pages/contact/contact.component';
-
-
-
+import { ProfilComponent } from './components/pages/profil/profil.component';
+import { HistoriqueComponent } from './components/pages/historique/historique.component';
 
 
 
@@ -24,8 +23,10 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'trajets', component: TrajetsComponent},
   { path: 'admin', component: AdminComponent, canActivate: [RoleGuard]},
-  { path: 'proposition-trajet', component:PropositionTrajetComponent, canActivate: [AuthGuard]},
-  { path: 'connected-page', component: ConnectedPageComponent,canActivate: [AuthGuard]}
+  { path: 'proposition-trajet', component:PropositionTrajetComponent,canActivate: [AuthGuard]},
+  { path: 'connected-page', component: ConnectedPageComponent,canActivate: [AuthGuard]},
+  { path: 'profil', component: ProfilComponent,canActivate: [AuthGuard]},
+  { path: 'historique', component: HistoriqueComponent,canActivate: [AuthGuard]}
 ];
 
 @NgModule({

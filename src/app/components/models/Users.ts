@@ -9,6 +9,7 @@ export class Users {
         public email?: string,
         public password?: string,
         public verified?: string,
+        public phoneNumber?: string,
         public role?: string,
         public rides?: Rides,
         public avatar?: string

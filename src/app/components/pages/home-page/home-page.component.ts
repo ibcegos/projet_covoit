@@ -38,7 +38,7 @@ export class HomePageComponent implements OnInit {
         this.responsedata = result;
         if (this.responsedata != null) {
           localStorage.setItem('accessToken', this.responsedata.accessToken);
-           localStorage.setItem('refreshtoken', this.responsedata.refreshToken);
+           localStorage.setItem('refreshToken', this.responsedata.refreshToken);
            console.log(this.responsedata.accessToken);
           this.route.navigate(['/connected-page']);
         } else {

@@ -18,6 +18,8 @@ import { AdminComponent } from './components/pages/admin/admin.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { ConnectedPageComponent } from './components/pages/connected-page/connected-page.component';
 import { ContactComponent } from './components/pages/contact/contact.component';
+import { ProfilComponent } from './components/pages/profil/profil.component';
+import { HistoriqueComponent } from './components/pages/historique/historique.component';
 
 
 
@@ -36,6 +38,8 @@ import { ContactComponent } from './components/pages/contact/contact.component';
     AdminComponent,
     ConnectedPageComponent,
     ContactComponent,
+    ProfilComponent,
+    HistoriqueComponent,
 
   ],
   imports: [
