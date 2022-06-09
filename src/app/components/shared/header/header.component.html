@@ -8,18 +8,30 @@
                             alt="Logo du site de covoiturage Rocbotcar"></a>
                 </li>
                 <div class="nav_right">
-                    <li class="nav-item" *ngIf="headerAdmin" >
-                        <a  class="nav-link" routerLink="/admin">ADMIN</a>
+                    <li class="nav-item" *ngIf="headerAdmin">
+                        <a class="nav-link text-center" routerLink="/admin">Admin</a>
                     </li>
                     <li class="nav-item">
-                        <a  class="nav-link" routerLink="/proposition-trajet">Proposer un trajet</a>
+                        <a class="nav-link text-center" routerLink="/trajets">Trouver<br>un trajet</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/trajets">Prendre un trajet</a>
+                        <a class="nav-link text-center" routerLink="/proposition-trajet">Proposer<br>un trajet</a>
                     </li>
-                    <li>
-                        <button  class="btn btnConnexion" type="button" routerLink="/">Deconnexion</button>
-                    </li>                 
+                    <li class="d-flex">
+                        <a class="btnCompte" routerLink="/profil">Mon Compte</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a class="nav-list" routerLink="/profil">Mon profil</a>
+                            </li>
+                            <li>
+                                <a class="nav-list" routerLink="/historique">Mes trajets</a>
+                            </li>
+                            <li>
+                                <a class="nav-list" routerLink="/">Déconnexion</a>
+                            </li>
+                        </ul>
+                    </li>
+
                 </div>
             </ul>
         </div>
@@ -41,10 +53,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/inscription">Inscription</a>
-                    </li>
-                    <li>
-                        <button  class="btn btnConnexion" type="button" routerLink="/">Connexion</button>
-                    </li>                 
+                    </li>              
                 </div>
             </ul>
         </div>

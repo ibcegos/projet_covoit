@@ -2,9 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
 
 
-
-
-
 .container {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -14,8 +11,8 @@
 
 }
 .imgTrajets {
-    width: 100%;
-    margin: 15%    
+    width: 140%;
+    margin: 10%    
 }
 
 .card {
@@ -27,7 +24,7 @@
     border-radius: 1rem;
     margin-right: 40px;
     overflow: scroll;
-    width: 85%;
+    width: 100%;
 
   }
 

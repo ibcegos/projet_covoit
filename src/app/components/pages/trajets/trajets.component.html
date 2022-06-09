@@ -1,47 +1,49 @@
 <app-header></app-header>
 
-<div class="container ">
-    <div class="illustration">
-        <img class="imgTrajets" src="../../../../assets/img/Rocbotcar-trajet.png"
-            alt="illustration consultation trajets rocbotcar">
-    </div>
-    <div class="card  mt-4">
-        <h1 class="text-center mb-3 ">LISTE DES TRAJETS</h1>
-        <div class="card2" *ngFor="let r of driverRide">
-            <div class="cardR" *ngIf="r.rideType == 'RECURRENT'">
-                <div class=" card__header">
-                    <span class="fa-solid fa-location-dot "><span class="card-title ps-3 ">{{r.destination}}</span>
-                    </span>
-                </div>
-                <div class="img">
-                    <img src="../../../../assets/img/avatar_default.png" alt="avatar" />
-                </div>
-                <div class="Ride">
-                    <h3>Trajet récurrent</h3>
-                </div>
-                <div class="ListeR-content">
-                    <div class="liste">
-                        <div class="liste-recurrente" *ngFor="let i of r.recurrentList">
-                            <div class="lit">{{i.jourAller}} {{i.timeRetour }}-{{i.timeAller}}</div>
+<div class="container_main ">
+    <div class="container">
+        <div class="illustration">
+            <img class="imgTrajets" src="../../../../assets/img/Rocbotcar-trajet.png"
+                alt="illustration consultation trajets rocbotcar">
+        </div>
+        <div class="card  mt-4">
+            <h1 class="text-center mb-3 ">LISTE DES TRAJETS</h1>
+            <div class="card2" *ngFor="let r of driverRide">
+                <div class="cardR" *ngIf="r.rideType == 'RECURRENT'">
+                    <div class=" card__header">
+                        <span class="fa-solid fa-location-dot "><span class="card-title ps-3 ">{{r.departure}}</span>
+                        </span>
+                    </div>
+                    <div class="img">
+                        <img src="../../../../assets/img/avatar_default.png" alt="avatar" />
+                    </div>
+                    <div class="Ride">
+                        <h3>Trajet récurrent</h3>
+                    </div>
+                    <div class="ListeR-content">
+                        <div class="liste">
+                            <div class="liste-recurrente" *ngFor="let i of r.recurrentList">
+                                <div class="lit">{{i.jourAller}} {{i.timeRetour }}-{{i.timeAller}}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card-content" *ngIf="r.rideType == 'SIMPLE'">
-                <div class=" card__header">
-                    <span class="fa-solid fa-location-dot "><span class="card-title ps-3 ">{{r.destination}}</span>
-                    </span>
-                </div>
-                <div class="img">
-                    <img src="../../../../assets/img/avatar_default.png" alt="avatar" />
-                </div>
-                <div class="Ride">
-                    <h3>Trajet simple</h3>
-                </div>
-                <div class="liste" *ngFor="let k of r.simpleList">
-                    <ul id="liste-simple">
-                        <li>{{k.dateAller | date :'EEEE dd LLLL'}} {{k.timeAller}} - {{k.timeRetour}}</li>
-                    </ul>
+                <div class="card-content" *ngIf="r.rideType == 'SIMPLE'">
+                    <div class=" card__header">
+                        <span class="fa-solid fa-location-dot "><span class="card-title ps-3 ">{{r.destination}}</span>
+                        </span>
+                    </div>
+                    <div class="img">
+                        <img src="../../../../assets/img/avatar_default.png" alt="avatar" />
+                    </div>
+                    <div class="Ride">
+                        <h3>Trajet simple</h3>
+                    </div>
+                    <div class="liste" *ngFor="let k of r.simpleList">
+                        <ul id="liste-simple">
+                            <li>{{k.dateAller | date :'EEEE dd LLLL'}} {{k.timeAller}} - {{k.timeRetour}}</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
