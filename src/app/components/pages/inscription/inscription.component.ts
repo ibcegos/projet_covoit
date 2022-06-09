@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
+import { Users } from '../../models/Users';
 
 @Component({
   selector: 'app-inscription',
@@ -18,6 +19,10 @@ export class InscriptionComponent implements OnInit {
   confirmedPasswordMistake:any = true;
   cguNull:any = true;
   display='none';
+  usersList:Users[] = [];
+  compteur:any = 0;
+  usernameExist:any = true;
+  pseudoInBdd: any = '';
 
   constructor(private usersService: UsersService ) { }
 
@@ -57,11 +62,25 @@ export class InscriptionComponent implements OnInit {
       if(data.username != "" && data.lastName != "" && data.firstName != "" 
         && data.email != "" && data.password != "" && data.confirmedPassword != ""
         && data.avatar != "" && data.cgu != "") {
-          this.display = 'block';
-          this.usersService.addUserService(data).subscribe( () =>
-          console.log("vous etes inscrit, veuillez attendre demain que votre compte soit validé par un admin !")
-      )
-      }
+
+          // //verification si le pseudo existe déjà
+          
+          // this.usersService.getUserByUsernameService(data.username).subscribe( (data) =>
+          //   this.pseudoInBdd = data
+          // )
+          // console.log(this.pseudoInBdd)
+          // console.log(data.username)
+
+          // if(this.pseudoInBdd == data.username) {
+          //   this.usernameExist = false;
+          // } else {
+            this.display = 'block';
+            this.usersService.addUserService(data).subscribe( () =>
+            console.log("vous etes inscrit, veuillez attendre demain que votre compte soit validé par un admin !")
+            )
+          }
+          
+      //}
   }
 
   //Vérification si les champs sont vides après click sur le champ

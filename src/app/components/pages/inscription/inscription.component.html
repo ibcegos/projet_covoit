@@ -1,3 +1,6 @@
+<app-header></app-header>
+
+
 <div class="container_main">
     <div class="container_form">
         <!-- Mon titre -->
@@ -15,6 +18,7 @@
                     <input type="text" (blur)="usernameBlur(user)" class="form-control" name="username" ngModel required>
                 </div>
                 <div [hidden]="usernameNull" class="form-group mt-0 text-danger">Veuillez entrer un pseudo !</div>
+                <div [hidden]="usernameExist" class="form-group mt-0 text-danger">Ce pseudo existe déjà !</div>
                 <div class="form-group">
                     <label for="lastName">Nom* :</label>
                     <input type="text" (blur)="lastNameBlur(user)" class="form-control" name="lastName" ngModel>
@@ -92,9 +96,6 @@
                     <div class="modal-header">
                         <img src="../../../../assets/img/logo_typo_rocbotcar.png" alt="ROCBOT CAR">
                         <h5 class="modal-title">En attente de validation</h5>
-                        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button> -->
                     </div>
                     <div class="modal-body">
                         <p class = "text-center">Votre compte va être validé par un administrateur.<br>

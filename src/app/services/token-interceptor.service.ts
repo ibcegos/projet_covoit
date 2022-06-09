@@ -9,9 +9,11 @@ import { AuthService } from './auth.service';
 export class TokenInterceptorService implements HttpInterceptor{
 
   constructor(private  inject:Injector) { }
+  
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let authservice = this.inject.get(AuthService);
     let authreq = request;
+    console.log(request)
     authreq = this.AddTokenheader(request, authservice.GetToken());
     return next.handle(authreq).pipe(
       catchError(errordata => {

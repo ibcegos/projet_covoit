@@ -37,8 +37,7 @@ export class AuthService {
     var loggintoken=localStorage.getItem('accessToken')||'';
     let _token = loggintoken.split('.')[1];
     this.tokenaccess = JSON.parse(atob(_token))
-    console.log(this.tokenaccess);
-    if(this.tokenaccess.roles.includes("User")){
+    if(this.tokenaccess.roles.includes("Admin")){
       return true
     }else{
       alert("Vous n'avez le droits d'accèder à cette page");
@@ -62,11 +61,11 @@ return this.http.post(this.API_URL + 'refresh', input);
 
 
 GetRefreshToken(){
-  return localStorage.getItem('refreshtoken')||'';
+  return localStorage.getItem('refreshToken')||'';
 }
 SaveTokens(tokendata: any) {
   localStorage.setItem('accessToken', tokendata.accessToken);
-  localStorage.setItem('refreshtoken', tokendata.refreshToken);
+  localStorage.setItem('refreshToken', tokendata.refreshToken);
 }
 
 GetRolebyToken(token: any) {
@@ -85,16 +84,6 @@ GetRolebyToken(token: any) {
 // HaveAccess(role: any, menu: any) {
 //   return this.http.get(this.API_URL+ 'HaveAccess?role=' + role + '&menu=' + menu);
 // }
-
-
-
-
-
-
-
-
-
-
 
 
 }

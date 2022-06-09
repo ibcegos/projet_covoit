@@ -1,7 +1,4 @@
-
 import { Rides } from "./Rides";
-
-
 
 export class Users {
     constructor(
@@ -11,7 +8,7 @@ export class Users {
         public firstName?: string,
         public email?: string,
         public password?: string,
-
+        public verified?: string,
         public role?: string,
         public rides?: Rides,
         public avatar?: string

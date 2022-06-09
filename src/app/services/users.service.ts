@@ -28,7 +28,7 @@ export class UsersService {
 
   //recuperer l'historique des users à valider après inscription
   getListUserToValidateService() : Observable<Users[]> {
-    return this.http.get<Users[]>("http://localhost:8080/Covoit/admin/get_users");
+    return this.http.get<Users[]>("http://localhost:8080/Covoit/admin/get_users_to_validate");
   }
 
   //validation d'un compte user par un admin
@@ -44,5 +44,20 @@ export class UsersService {
     //return this.http.post<any>("http://localhost:8080/Covoit/login", user);
   }
 
+  deleteUser(id: any) : Observable<any> {
+    return this.http.delete<any>("http://localhost:8080/Covoit/admin/delete_user/" + id);
+  }
+
+  getAllUsersService() : Observable<Users[]> {
+    return this.http.get<Users[]>("http://localhost:8080/Covoit/admin/get_all_users");
+  }
+
+   updateUserService(user: Users) : Observable<Users> {
+     return this.http.put<Users>("http://localhost:8080/Covoit/admin/update_user", user);
+   }
+
+   getUserByUsernameService(username: String) : Observable<any> {
+    return this.http.get("http://localhost:8080/Covoit/user/get_users_by_username/"+ username);
+  }
 
 }

@@ -34,15 +34,12 @@ export class HomePageComponent implements OnInit {
 
  Proceedlogin(dataform: any) {
    console.log(dataform);
-    //  if (this.loginform.valid) {
       this.service.proceedlogin(dataform).subscribe(result => {
         this.responsedata = result;
-        console.log(result);
         if (this.responsedata != null) {
           localStorage.setItem('accessToken', this.responsedata.accessToken);
            localStorage.setItem('refreshtoken', this.responsedata.refreshToken);
            console.log(this.responsedata.accessToken);
-          //  this.service.updatemenu.next();
           this.route.navigate(['/connected-page']);
         } else {
           alert("login Failed");
