@@ -13,6 +13,7 @@ export class Users {
         public password?: string,
         public phoneNumber?: string,
 
+
         public role?: string,
         public rides?: Rides,
         public avatar?: string

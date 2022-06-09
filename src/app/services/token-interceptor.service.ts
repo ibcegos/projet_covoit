@@ -7,6 +7,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class TokenInterceptorService implements HttpInterceptor{
+  refresh = false;
 
   constructor(private  inject:Injector) { }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -15,12 +16,16 @@ export class TokenInterceptorService implements HttpInterceptor{
     authreq = this.AddTokenheader(request, authservice.GetToken());
     return next.handle(authreq).pipe(
       catchError(errordata => {
-        if (errordata.status === 401) {
+        if (errordata.status === 403 && !this.refresh ) {
+          this.refresh= true;
+
           // need to implement logout
-          authservice.Logout();
+          // authservice.Logout();
           // refresh token logic
           //return this.handleRefrehToken(request, next);
+
         }
+        this.refresh= false;
         return throwError(errordata);
       })
     );
@@ -29,6 +34,7 @@ export class TokenInterceptorService implements HttpInterceptor{
 
   handleRefrehToken(request: HttpRequest<any>, next: HttpHandler) {
     let authservice = this.inject.get(AuthService);
+    
     return authservice.GenereteRefreshToken().pipe(
       switchMap((data: any) => {
         authservice.SaveTokens(data);

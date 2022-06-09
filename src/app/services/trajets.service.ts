@@ -19,9 +19,15 @@ export class TrajetsService {
 
 
 
+
   addRideService(ride: Rides): Observable<any> {
     return this.http.post<any>("http://localhost:8080/Covoit/addRide",ride);
   }
+
+
+  //  getUserService() : Observable<any>{
+  //   return this.http.get<any>("http://localhost:8080/Covoit/getdriver");
+  //  }
 
 
 
