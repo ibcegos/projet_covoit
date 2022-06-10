@@ -11,11 +11,18 @@ import { Rides } from '../components/models/Rides';
 })
 export class TrajetsService {
 
+
   tokenresp: any;
   constructor(
     private http: HttpClient,
 
   ) { }
+
+
+  filterbyKeywordServices(departure: any):  Observable<any>{
+    
+    return this.http.get<any>("http://localhost:8080/Covoit/getRidesByDeparture/" + departure);
+  }
 
 
 
@@ -25,9 +32,9 @@ export class TrajetsService {
   }
 
 
-  //  getUserService() : Observable<any>{
-  //   return this.http.get<any>("http://localhost:8080/Covoit/getdriver");
-  //  }
+    getUserService() : Observable<any>{
+     return this.http.get<any>("http://localhost:8080/Covoit/getdriver");
+   }
 
 
 

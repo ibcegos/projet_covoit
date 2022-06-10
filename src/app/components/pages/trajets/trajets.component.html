@@ -1,49 +1,107 @@
 <app-header></app-header>
 
 <div class="container_main ">
-    <div class="container">
-        <div class="illustration">
-            <img class="imgTrajets" src="../../../../assets/img/Rocbotcar-trajet.png"
-                alt="illustration consultation trajets rocbotcar">
+    <div class=" d-flex justify-content-center flex-column">
+        <div class=" search col-6 text-center">
+            
+            <form (ngSubmit)="filterbyKeyword(departure)" #departure="ngForm">
+                <div class="row ">
+                    <div class="inputKey col-6">
+                        <div class="form-group">
+                            <input type="text" name="keyword" ngModel placeholder="Adresse de départ">
+                        </div>
+                    </div>
+                    <div class="clickBtn col-6">
+                        <button type="submit" class="btn btn-primary">Rechercher</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="card  mt-4">
-            <h1 class="text-center mb-3 ">LISTE DES TRAJETS</h1>
-            <div class="card2" *ngFor="let r of driverRide">
-                <div class="cardR" *ngIf="r.rideType == 'RECURRENT'">
-                    <div class=" card__header">
-                        <span class="fa-solid fa-location-dot "><span class="card-title ps-3 ">{{r.departure}}</span>
-                        </span>
-                    </div>
-                    <div class="img">
-                        <img src="../../../../assets/img/avatar_default.png" alt="avatar" />
-                    </div>
-                    <div class="Ride">
-                        <h3>Trajet récurrent</h3>
-                    </div>
-                    <div class="ListeR-content">
-                        <div class="liste">
-                            <div class="liste-recurrente" *ngFor="let i of r.recurrentList">
-                                <div class="lit">{{i.jourAller}} {{i.timeRetour }}-{{i.timeAller}}</div>
+
+
+        <div class="container">
+
+
+            <div class="illustration">
+                <img class="imgTrajets" src="../../../../assets/img/Rocbotcar-trajet.png"
+                    alt="illustration consultation trajets rocbotcar">
+            </div>
+            <div class="card  mt-4">
+                <h1 class="text-center mb-3 ">LISTE DES TRAJETS</h1>
+                <div class="card2" *ngFor="let r of driverRide">
+                    <!-- <div class="dzede" >  -->
+                    <!-- <div class="test" *ngIf="k.id == r.id"> -->
+                    <div class="cardR" *ngIf="r.rideType == 'RECURRENT'">
+                        <div class=" card__header">
+                            <span class="fa-solid fa-location-dot "><span class="card-title ps-3">{{r.departure}}
+                                </span>
+                            </span>
+                        </div>
+                        <div class="img">
+                            <img src="../../../../assets/img/avatar_default.png" alt="avatar" />
+                        </div>
+                        <div class="Contact">
+                            <div class="clickToCall-phone">
+                                <button class="btn" *ngIf="IsLoggedIn()">
+                                    <a href="tel:{{r.phone}}">
+                                        <i class="fas fa-phone"></i>
+                                    </a>
+                                </button>
+                            </div>
+                            <div class="clickToEmail-email">
+                                <button class="btn" *ngIf="IsLoggedIn()">
+                                    <a href="mailto:{{r.email}}">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="Ride">
+                            <h3>Réccurent</h3>
+                        </div>
+                        <div class="ListeR-content">
+                            <div class="liste">
+                                <div class="liste-recurrente" *ngFor="let i of r.recurrentList">
+                                    <div class="lit">{{i.jourAller}} {{i.timeRetour }}-{{i.timeAller}}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-content" *ngIf="r.rideType == 'SIMPLE'">
-                    <div class=" card__header">
-                        <span class="fa-solid fa-location-dot "><span class="card-title ps-3 ">{{r.destination}}</span>
-                        </span>
+                    <div class="card-content" *ngIf="r.rideType == 'SIMPLE'">
+                        <div class=" card__header">
+                            <span class="fa-solid fa-location-dot"><span class="card-title ps-3">{{r.departure}}</span>
+                            </span>
+                        </div>
+                        <div class="img">
+                            <img src="../../../../assets/img/avatar_default.png" alt="avatar" />
+                        </div>
+                        <div class="Contact">
+                            <div class="clickToCall-phone">
+                                <button class="btn" *ngIf="IsLoggedIn()">
+                                    <a href="tel:{{r.phone}}">
+                                        <i class="fas fa-phone"></i>
+                                    </a>
+                                </button>
+                            </div>
+                            <div class="clickToEmail-email">
+                                <button class="btn" *ngIf="IsLoggedIn()">
+                                    <a href="mailto:{{r.email}}">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="Ride">
+                            <h3>Simple</h3>
+                        </div>
+                        <div class="liste" *ngFor="let k of r.simpleList">
+                            <ul id="liste-simple">
+                                <li>{{k.dateAller | date :'EEEE dd LLLL'}} {{k.timeAller}} - {{k.timeRetour}}</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="img">
-                        <img src="../../../../assets/img/avatar_default.png" alt="avatar" />
-                    </div>
-                    <div class="Ride">
-                        <h3>Trajet simple</h3>
-                    </div>
-                    <div class="liste" *ngFor="let k of r.simpleList">
-                        <ul id="liste-simple">
-                            <li>{{k.dateAller | date :'EEEE dd LLLL'}} {{k.timeAller}} - {{k.timeRetour}}</li>
-                        </ul>
-                    </div>
+                    <!-- </div> -->
+                    <!-- </div>  -->
                 </div>
             </div>
         </div>

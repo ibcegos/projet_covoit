@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import { TrajetsService } from 'src/app/services/trajets.service';
 import { Drivers } from '../../models/Drivers';
@@ -19,26 +20,21 @@ export class TrajetsComponent implements OnInit {
   TableRecurrent: any[] = [];
   userRide!: any;
 
+ 
+
 
 
 
   //recurrentList: Recurrents[] = [];
   //ride!: any;
   //typeTrajet: TypeTrajet[] = [];
-
-
-
-
   //IsRecu= this.trajetsService.isReccurent;
-
-
-
-
   constructor(private trajetsService: TrajetsService) { }
 
   ngOnInit(): void {
+    
     this.getTrajets();
-    // this.getUser();
+    this.getUser();
   }
 
   getTrajets() {
@@ -48,12 +44,27 @@ export class TrajetsComponent implements OnInit {
       this.driverRide = data;
     });
   }
-  // getUser() {
-  //   this.trajetsService.getUserService().subscribe((data) => {
-  //     this.userRide = data;
-  //     console.log(data);
-  //   });
-  // }
+   getUser() {
+     this.trajetsService.getUserService().subscribe((data) => {
+       this.userRide = data;
+       console.log(data);
+     });
+   }
+
+   filterbyKeyword(searchK : NgForm){
+     console.log(searchK.value.keyword);
+     let keyword = searchK.value.keyword
+
+    this.trajetsService.filterbyKeywordServices(keyword).subscribe(data => {
+      this.driverRide = data;
+      
+      
+    })
+  }
+
+   IsLoggedIn(){
+    return localStorage.getItem('accessToken')!=null;
+  }
 }
 
 
